@@ -1,0 +1,105 @@
+\documentclass[]{jarticle}          % 一段組
+%\documentclass[twocolumn]{jarticle} % 二段組
+
+\textwidth 180mm
+\textheight 255mm
+\oddsidemargin -12mm
+\topmargin -15mm
+\columnsep 10mm
+
+%\vspace{0.5cm} % 一段組の場合はコメントアウトした方が体裁がよいx
+%] % 一段組の場合はコメントアウトする
+
+\usepackage{styles/labheadings}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{amsmath,amssymb}
+\usepackage{url}
+% 追加
+\usepackage{listings,jvlisting} 
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\usepackage{indentfirst}
+\captionsetup{compatibility=false}
+
+\input{numerical_definition.tex}
+% report.texと同じディレクトリにnumerical_definition.texを入れておけば上の書き方でもいいはずです
+
+\usepackage[
+  dvipdfm,
+  bookmarks=true,
+  bookmarksnumbered=true,
+  colorlinks=true]{hyperref}
+\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+
+%ここからソースコードの表示に関する設定
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
+%ここまでソースコードの表示に関する設定
+
+\pagestyle{labheadings}
+\headerleft{課題1}   % ヘッダの左側のタイトル
+\headerright{2024年5月1日}  % ヘッダの右側のタイトル
+
+\begin{document}
+
+%\twocolumn % 一段組の場合はコメントアウトする
+
+\vspace*{2ex}
+\begin{center}
+ {\Large \bf 画像工学特論 課題1}\\ % タイトル
+ \vspace*{5mm}
+ {\large M1 田川幸汰}% 発表者名
+\end{center}
+
+%\vspace{0.5cm} % 一段組の場合はコメントアウトした方が体裁がよいx
+%] % 一段組の場合はコメントアウトする
+
+%新しく作成したコマンド
+% \newcommand{\reffig}[1]{\hyperref[#1]{図\ref{#1}}}
+% \newcommand{\refeq}[1]{\hyperref[#1]{式(\ref{#1})}}
+% \newcommand{\reftab}[1]{\hyperref[#1]{表\ref{#1}}}
+% \newcommand{\refsec}[1]{\hyperref[#1]{\ref{#1}章}}
+% \newcommand{\refsubsec}[1]{\hyperref[#1]{\ref{#1}節}}
+
+\section{課題1}
+ユークリッドの5つの公準を挙げよ
+\subsection{解答}
+一意性の公準、直進性の公準、円の公準、相等角の公準、平行線の公準
+
+\section{課題2}
+ユークリッド幾何以外の幾何を2つ以上挙げ、それぞれ数行で簡潔に説明せよ
+\subsection{解答}
+楕円幾何学...平面幾何学の一種である。ユークリッド幾何学と異なる点として、
+平行線の概念が存在しないこと、円の性質としてすべての円が同じ長さの半径を持つことなどがある。
+
+双曲幾何学...平面幾何学の一種である。ユークリッド幾何学と異なる点として、
+2つの直線が同一平面上で直行する場合でも、これらの直線が無限遠点で交わること、三角形の内角の和が180度よりも大きくなることなどがある。
+
+\newpage
+
+\section{課題3}
+透視図法における1点透視、2点透視、3点透視の例を示せ。また、各図における消失点と消失線を示せ。
+\subsection{解答}
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[]{figures/1.pdf}
+    \caption{透視図}
+  \end{center}
+\end{figure}
+\end{document}
