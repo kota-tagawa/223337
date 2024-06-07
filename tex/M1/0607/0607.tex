@@ -53,7 +53,7 @@
 
 \pagestyle{labheadings}
 \headerleft{２次元フロアマップからのシーンの３次元モデルの作成}   % ヘッダの左側のタイトル
-\headerright{2024年4月17日}  % ヘッダの右側のタイトル
+\headerright{2024年6月7日}  % ヘッダの右側のタイトル
 
 \begin{document}
 
@@ -98,8 +98,46 @@
 
 \section{概要}
 透視投影画像からカメラ位置・姿勢推定を行った。
-方法については前回の発表で説明した、直行射影の共線性と共面性を用いた方法で推定する。
+方法については前回の発表で説明した、直行射影の共線性と共面性を用いた方法\cite{bib_1}で推定する。
+また、カメラ位置姿勢推定を行う際に全方位カメラの内部パラメータである焦点距離を使用する。そのため
+事前準備として全方位カメラのキャリブレーションを行った。
 
+\section{全方位カメラのキャリブレーション}
+\subsection{キャリブレーション方法}
+全方位カメラのキャリブレーションは以下の手順で行う。
+\begin{itemize}
+  \item チェッカーボードを全方位カメラで10枚以上撮影
+  \item 全方位画像から、チェッカーボードの全体が写る視点で透視投影画像を生成
+  \item キャリブレーションを行うプログラムを実行
+\end{itemize}
+透視投影画図を生成する際、解像度は変更しないようにする。
+また、キャリブレーションを行うプログラムはOpenCVのチェッカーボードの交点の座標を調べる関数indChessboardCorners、
+3次元座標と2次元座標の対応から内部パラメータを計算する関数calibrateCameraが用いられている。
+\subsection{実行結果}
+全方位画像から生成された透視投影画像のキャリブレーション結果の一部を\hyperref[three]{図\ref{three}}に示す。
+\begin{figure}[!ht]
+  \begin{center}
+    \begin{tabular}{cc}
+      \includegraphics[keepaspectratio, width=0.4\linewidth]{figures/GetParam_result/1.jpg}&
+      \includegraphics[keepaspectratio, width=0.4\linewidth]{figures/GetParam_result/5.jpg}\\
+      \includegraphics[keepaspectratio, width=0.4\linewidth]{figures/GetParam_result/9.jpg}&
+      \includegraphics[keepaspectratio, width=0.4\linewidth]{figures/GetParam_result/13.jpg}\\
+    \end{tabular}
+  \end{center}
+  \caption{キャリブレーション結果}
+  \label{three}
+\end{figure}
+また、出力されたカメラの内部パラメータ行列$\MU$を以下に示す。
+\begin{equation}
+  \MU = 
+  \begin{pmatrix}
+    511.69918760786322 & 0.00000000000000 & 784.54139306531715 \\
+    0.00000000000000 & 499.73234060481144 & 536.82834728101511 \\
+    0.00000000000000 & 0.00000000000000 & 1.00000000000000 \\
+  \end{pmatrix}
+\end{equation}
+これより、チェッカーボードの交点を検出し、カメラの内部パラメータが推測されていることがわかる。
+また焦点距離$f_x=511.69918760786322$、$f_y=499.73234060481144$となったが、今回焦点距離は各軸共通なので$f_x$と$f_y$の平均を用いる。
 \section{カメラ位置・姿勢推定の実行結果}
 \subsection{入力}
 直行射影の共線性と共面性を利用したカメラ姿勢の推定の際に必要な入力を以下に示す。

@@ -271,6 +271,28 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT ./figures/GetParam_result/1.jpg
+INPUT ./figures/GetParam_result/1.jpg
+INPUT figures/GetParam_result/1.jpg
+INPUT extractbb -B cropbox -O figures/GetParam_result/1.jpg
+INPUT ./figures/GetParam_result/5.jpg
+INPUT ./figures/GetParam_result/5.jpg
+INPUT figures/GetParam_result/5.jpg
+INPUT extractbb -B cropbox -O figures/GetParam_result/5.jpg
+INPUT ./figures/GetParam_result/9.jpg
+INPUT ./figures/GetParam_result/9.jpg
+INPUT figures/GetParam_result/9.jpg
+INPUT extractbb -B cropbox -O figures/GetParam_result/9.jpg
+INPUT ./figures/GetParam_result/13.jpg
+INPUT ./figures/GetParam_result/13.jpg
+INPUT figures/GetParam_result/13.jpg
+INPUT extractbb -B cropbox -O figures/GetParam_result/13.jpg
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin9.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/ptex-fonts/standard/min9.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth9.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/ptex-fonts/standard/goth9.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
@@ -280,16 +302,15 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
+INPUT ./styles/toyohashi-logo2.eps
+INPUT ./styles/toyohashi-logo2.eps
+INPUT styles/toyohashi-logo2.eps
+INPUT styles/toyohashi-logo2.eps
+OUTPUT out/0607.dvi
 INPUT ./figures/3dmodel.png
 INPUT ./figures/3dmodel.png
 INPUT figures/3dmodel.png
 INPUT extractbb -B cropbox -O figures/3dmodel.png
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin9.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/ptex-fonts/standard/min9.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth9.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/ptex-fonts/standard/goth9.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
 INPUT ./figures/select_point.png
 INPUT ./figures/select_point.png
 INPUT figures/select_point.png
@@ -297,8 +318,6 @@ INPUT extractbb -B cropbox -O figures/select_point.png
 INPUT ./styles/toyohashi-logo2.eps
 INPUT ./styles/toyohashi-logo2.eps
 INPUT styles/toyohashi-logo2.eps
-INPUT styles/toyohashi-logo2.eps
-OUTPUT out/0607.dvi
 INPUT ./styles/toyohashi-logo2.eps
 INPUT ./styles/toyohashi-logo2.eps
 INPUT styles/toyohashi-logo2.eps

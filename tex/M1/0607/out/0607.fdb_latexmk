@@ -1,11 +1,11 @@
 # Fdb version 4
-["dvipdf"] 1717654761 "out/0607.dvi" "out/0607.pdf" "out/0607" 1717654765 0
-  "out/0607.dvi" 1717654761 10836 27b7077697b3d2476ea4b9c2678e466a "latex"
+["dvipdf"] 1717726141 "out/0607.dvi" "out/0607.pdf" "out/0607" 1717726145 0
+  "out/0607.dvi" 1717726141 15448 1b9adf412d047ebee971532742c3f5b7 "latex"
   (generated)
   "out/0607.pdf"
   (rewritten before read)
-["latex"] 1717654760 "/home/tagawakota/223337/tex/M1/0607/0607.tex" "out/0607.dvi" "0607" 1717654765 0
-  "/home/tagawakota/223337/tex/M1/0607/0607.tex" 1717654759 6963 958a9b1927624a6611bb97f94be1b0aa ""
+["latex"] 1717726140 "/home/tagawakota/223337/tex/M1/0607/0607.tex" "out/0607.dvi" "0607" 1717726145 0
+  "/home/tagawakota/223337/tex/M1/0607/0607.tex" 1717726140 9428 6a73a0824d1ec6b5dfae47815a64af9f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm" 1463434352 1196 5981e79c37b2cfd27b3612a6783cd4b6 ""
@@ -97,12 +97,16 @@
   "/usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf" 1681165822 40967 d940221f8762fd5848760382d97d1226 ""
   "/usr/local/texlive/2023/texmf-var/web2c/eptex/platex.fmt" 1684116213 7890318 6436f0e0d349ffdd8388d4716c419c80 ""
   "/usr/local/texlive/2023/texmf.cnf" 1682662005 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "0607.tex" 1717654759 6963 958a9b1927624a6611bb97f94be1b0aa ""
+  "0607.tex" 1717726140 9428 6a73a0824d1ec6b5dfae47815a64af9f ""
   "figures/3dmodel.png" 1717621943 13814 47eb944a5d1d2e8e711b3f2fe3c46fb8 ""
+  "figures/GetParam_result/1.jpg" 1717659140 341397 036c40a9f2cea35f83822c47c29ab5ec ""
+  "figures/GetParam_result/13.jpg" 1717659140 313734 c9a8465c050e5e0e86f8e5f77968701a ""
+  "figures/GetParam_result/5.jpg" 1717659140 356368 14df76cde5f4a6b16f2428c11485acb8 ""
+  "figures/GetParam_result/9.jpg" 1717659140 349418 395ba6393b794d8eb89f453bdf31da9e ""
   "figures/select_point.png" 1717652981 803359 ac076090147f27ab1b63e58b061c75cf ""
   "numerical_definition.tex" 1686927290 4749 fc09bf87bd60716b41c9959ab632bdc7 ""
-  "out/0607.aux" 1717654761 1618 67d8ad724b289c4c59a10be01c10898d "latex"
-  "out/0607.out" 1717654761 301 ca31c4f35ffd11a1e39231ca3a1a1d16 "latex"
+  "out/0607.aux" 1717726141 2285 8ff4e6c30a134bceba68e96d066d0197 "latex"
+  "out/0607.out" 1717726141 537 9b5dfa89ed6ede32a08f80846d154270 "latex"
   "styles/labheadings.sty" 1686927298 787 11a0922d522475343365231d042a659a ""
   "styles/toyohashi-logo2.eps" 1686927296 10116 bacff4f47b7f7ee8896858c4c85fa157 ""
   (generated)
