@@ -1,9 +1,10 @@
 #include <iostream>
 
+// kadai1
 class Message{
-public:
-    // kadai1
+protected:
     char *message;
+public:
     void setMessage(const char *m);
     const char* getMessage();
 };
