@@ -15,7 +15,6 @@
 \usepackage{amsmath,amssymb}
 \usepackage{url}
 % 追加
-\usepackage{listings,jvlisting}
 \usepackage[hang,small,bf]{caption}
 \usepackage[subrefformat=parens]{subcaption}
 \captionsetup{compatibility=false}
@@ -29,27 +28,6 @@
   bookmarksnumbered=true,
   colorlinks=true]{hyperref}
 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
-
-%ここからソースコードの表示に関する設定
-\lstset{
-  basicstyle={\ttfamily},
-  identifierstyle={\small},
-  commentstyle={\smallitshape},
-  keywordstyle={\small\bfseries},
-  ndkeywordstyle={\small},
-  stringstyle={\small\ttfamily},
-  frame={tb},
-  breaklines=true,
-  columns=[l]{fullflexible},
-  numbers=left,
-  xrightmargin=0zw,
-  xleftmargin=3zw,
-  numberstyle={\scriptsize},
-  stepnumber=1,
-  numbersep=1zw,
-  lineskip=-0.5ex
-}
-%ここまでソースコードの表示に関する設定
 
 \pagestyle{labheadings}
 \headerleft{２次元フロアマップからのシーンの３次元モデルの作成}   % ヘッダの左側のタイトル

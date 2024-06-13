@@ -1,10 +1,10 @@
-This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.sjis) (TeX Live 2024) (preloaded format=platex 2024.6.12)  12 JUN 2024 15:22
+This is e-upTeX, Version 3.141592653-p4.1.1-u1.30-230214-2.6 (utf8.sjis) (TeX Live 2024) (preloaded format=platex 2024.6.12)  13 JUN 2024 13:24
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/223337/tex/M1/0607/0607.tex
-(c:/223337/tex/M1/0607/0607.tex
+**c:/223337/gazoukougaku/kadai5/tex/kadai5.tex
+(c:/223337/gazoukougaku/kadai5/tex/kadai5.tex
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2024-06-01>
 L3 programming layer <2024-05-27>
@@ -161,6 +161,8 @@ Package caption Info: New subtype `subfigure' on input line 238.
 \c@subfigure=\count283
 Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count284
+) (c:/texlive/2024/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
 ) (./numerical_definition.tex) (c:/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-05-23 v7.01i Hypertext links for LaTeX
 (c:/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
@@ -278,75 +280,63 @@ File: l3backend-dvips.def 2024-05-08 L3 backend support: dvips
 \g__pdf_backend_annotation_int=\count299
 \g__pdf_backend_link_int=\count300
 \g__pdf_backend_link_sf_int=\count301
-) (out/0607.aux)
-\openout1 = `0607.aux'.
+) (out/kadai5.aux)
+\openout1 = `kadai5.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 36.
-(out/0607.out) (out/0607.out)
+Package hyperref Info: Link coloring ON on input line 37.
+(out/kadai5.out) (out/kadai5.out)
 \@outlinefile=\write3
-\openout3 = `0607.out'.
+\openout3 = `kadai5.out'.
 
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 42.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 43.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 42.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 43.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 84.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 61.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 84.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 98.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 61.
+
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 79.
 (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 98.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 79.
 (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-File: figures/GetParam_result/1.jpg Graphic file (type bmp)
-<figures/GetParam_result/1.jpg>
-File: figures/GetParam_result/5.jpg Graphic file (type bmp)
-<figures/GetParam_result/5.jpg>
-File: figures/GetParam_result/9.jpg Graphic file (type bmp)
-<figures/GetParam_result/9.jpg>
-File: figures/GetParam_result/13.jpg Graphic file (type bmp)
-<figures/GetParam_result/13.jpg>
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 105.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 105.
-
-
 File: styles/toyohashi-logo2.eps Graphic file (type eps)
 <styles/toyohashi-logo2.eps>
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 116.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 79.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 116.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 79.
 
 Overfull \hbox (31.78607pt too wide) has occurred while \output is active
 []$[]$[]
@@ -357,63 +347,22 @@ Overfull \vbox (13.88252pt too high) has occurred while \output is active []
 
 [1
 
-]
-File: figures/3dmodel.png Graphic file (type bmp)
-<figures/3dmodel.png>
-File: figures/select_point.png Graphic file (type bmp)
-<figures/select_point.png>
-
-
-File: styles/toyohashi-logo2.eps Graphic file (type eps)
-<styles/toyohashi-logo2.eps>
-
-Overfull \hbox (31.78607pt too wide) has occurred while \output is active
-[]$[]$[]
- []
-
-
-Overfull \vbox (13.88252pt too high) has occurred while \output is active []
-
-[2]
-
-File: styles/toyohashi-logo2.eps Graphic file (type eps)
-<styles/toyohashi-logo2.eps>
-
-Overfull \hbox (31.78607pt too wide) has occurred while \output is active
-[]$[]$[]
- []
-
-
-Overfull \vbox (13.88252pt too high) has occurred while \output is active []
-
-[3]
-
-File: styles/toyohashi-logo2.eps Graphic file (type eps)
-<styles/toyohashi-logo2.eps>
-
-Overfull \hbox (31.78607pt too wide) has occurred while \output is active
-[]$[]$[]
- []
-
-
-Overfull \vbox (13.88252pt too high) has occurred while \output is active []
-
-[4] (out/0607.aux)
+] (out/kadai5.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2024-06-01>
 L3 programming layer <2024-05-27>
  ***********
-Package rerunfilecheck Info: File `0607.out' has not changed.
-(rerunfilecheck)             Checksum: A29145605F570191E58A073EA18042C6;957.
+Package rerunfilecheck Info: File `kadai5.out' has not changed.
+(rerunfilecheck)             Checksum: C8FDF8657193D370656659A4FE954687;386.
  ) 
 Here is how much of TeX's memory you used:
- 11107 strings out of 475707
- 172498 string characters out of 5780275
- 1929739 words of memory out of 5000000
- 33727 multiletter control sequences out of 15000+600000
- 570400 words of font info for 85 fonts, out of 8000000 for 9000
+ 11028 strings out of 475707
+ 171145 string characters out of 5780275
+ 1924739 words of memory out of 5000000
+ 33672 multiletter control sequences out of 15000+600000
+ 566083 words of font info for 70 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 72i,11n,79p,297b,565s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,9n,79p,311b,450s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/0607.dvi (4 pages, 15868 bytes).
+Output written on out/kadai5.dvi (1 page, 4300 bytes).
