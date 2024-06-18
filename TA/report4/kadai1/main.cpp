@@ -8,11 +8,11 @@
 
 using namespace std;
 
-void kadai1(double mean, double variance, const std::vector<int>& sample_sizes, int seed){
+void kadai1(double mean, double variance, const vector<int>& sample_sizes, int seed){
     // 加点課題
     ofstream outfile("output.csv");
     if (!outfile) {
-        std::cerr << "Failed to open file." << std::endl;
+        cerr << "Failed to open file." << endl;
         return;
     }
     outfile << "N,SampleMean,SampleVariance,MeanDiffSquared,VarianceDiffSquared\n";
@@ -40,7 +40,7 @@ void kadai1(double mean, double variance, const std::vector<int>& sample_sizes, 
 }
 int main(int argc, char* argv[]) {
     if (argc < 5) {
-        std::cerr << "Usage: " << argv[0] << " <mean> <variance> <seed> <sample_sizes...>" << std::endl;
+        cerr << "Usage: " << argv[0] << " <mean> <variance> <seed> <sample_sizes...>" << endl;
         return 1;
     }
 
