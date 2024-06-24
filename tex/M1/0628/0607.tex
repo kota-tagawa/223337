@@ -1,0 +1,323 @@
+\documentclass[]{jarticle}          % 一段組
+%\documentclass[twocolumn]{jarticle} % 二段組
+
+\textwidth 180mm
+\textheight 255mm
+\oddsidemargin -12mm
+\topmargin -15mm
+\columnsep 10mm
+
+%\vspace{0.5cm} % 一段組の場合はコメントアウトした方が体裁がよいx
+%] % 一段組の場合はコメントアウトする
+
+\usepackage{styles/labheadings}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{amsmath,amssymb}
+\usepackage{url}
+% 追加
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+
+\input{numerical_definition.tex}
+% report.texと同じディレクトリにnumerical_definition.texを入れておけば上の書き方でもいいはずです
+
+\usepackage[
+  dvipdfm,
+  bookmarks=true,
+  bookmarksnumbered=true,
+  colorlinks=true]{hyperref}
+\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+
+\pagestyle{labheadings}
+\headerleft{２次元フロアマップからのシーンの３次元モデルの作成}   % ヘッダの左側のタイトル
+\headerright{2024年6月7日}  % ヘッダの右側のタイトル
+
+\begin{document}
+
+%\twocolumn % 一段組の場合はコメントアウトする
+
+\vspace*{2ex}
+\begin{center}
+ {\Large \bf ２次元フロアマップからのシーンの３次元モデルの作成}\\ % タイトル
+ \vspace*{5mm}
+ {\large M1 田川幸汰}% 発表者名
+\end{center}
+
+%\vspace{0.5cm} % 一段組の場合はコメントアウトした方が体裁がよいx
+%] % 一段組の場合はコメントアウトする
+
+%新しく作成したコマンド
+% \newcommand{\reffig}[1]{\hyperref[#1]{図\ref{#1}}}
+% \newcommand{\refeq}[1]{\hyperref[#1]{式(\ref{#1})}}
+% \newcommand{\reftab}[1]{\hyperref[#1]{表\ref{#1}}}
+% \newcommand{\refsec}[1]{\hyperref[#1]{\ref{#1}章}}
+% \newcommand{\refsubsec}[1]{\hyperref[#1]{\ref{#1}節}}
+
+% 数式
+%\begin{equation}
+%  数式記述  
+%  \label{ラベル名}
+%\end{equation}
+
+% 図
+% \begin{figure}[!ht]
+%   \begin{center}
+%     \includegraphics[scale=0.5]{figures/画像ファイル名}
+%     \caption{キャプション名}
+%     \label{ラベル名}
+%   \end{center}
+% \end{figure}
+
+% リスト
+% \begin{enumerate or itemize}
+%   \item 
+% \end{enumerate or itemize}
+\section{今年度の研究}
+\subsection{研究概要}
+今年度は2次元フロアマップから3次元シーンモデルを作成する手法について研究する。
+特にショッピングモールのような複雑な内部構造を持つ建物において、この研究で用いる手法は非常に有用なものになると考えられる。
+この研究の概要を以下に示す。
+\begin{enumerate}
+  \item ショッピングモールのフロアマップから3次元モデルを生成する。
+  \item ショッピングモール内を全方位カメラで撮影し、そこから透視投影画像を生成する。
+  \item 透視投影画像から得られる点、線特徴量からカメラ姿勢を推定する。
+  \item 3次元モデルに対して正しい大きさ、位置、方向でテクスチャ画像を割り当てる。
+\end{enumerate}
+このうち、本研究では主に2,4の手順について担当する。
+特に、全方位画像から3次元モデルのテクスチャを生成する手法を用いることで、
+高精度なショッピングモールの3次元モデルを自動的かつ効率的に生成することを目指す。
+今回の進捗報告では、研究の準備として行った全方位画像から透視投影画像の生成と
+３次元モデルと透視投影画像の対応からのカメラ位置姿勢推定、
+また、1枚の全方位画像からテクスチャを作成し3次元モデルに貼り付けた結果を示す。
+
+\section{全方位画像から透視投影画像の生成}
+全方位画像から任意視線方向の透視投影画像を生成する。今回は透視投影画像を生成する際にOpenCVのremap関数を用いた。
+OpenCvのremap関数を用いるメリットとしてmapを使い回すことで幾何変換を行う回数を減らせることができる点がある。特に複数の画像に対して同じ幾何変換を適用する場合に、
+処理速度が大きく向上する。透視投影画像の生成手法については、remap関数を利用した部分について説明する。
+\subsection{remap関数を利用した透視投影画像生成}
+remap関数は変換前の画像と$X$座標のマップ、$Y$座標のマップ、画像の補完手法を引数として、変換後の画像を返す。ここで、マップとは出力先の各軸の座標が入っている。
+例として無変換の場合の$X$座標は$[0,1,2,3,...]$となり、$X$軸方向に2倍に拡大したい場合の$X$座標は$[0,0.5,1.0,1.5,...]$となる。
+$X$軸方向の出力画像座標データ$\UU$、$Y$軸方向の出力画像座標データ$\VU$を以下のように定義する。
+\begin{equation}
+  \UU(W_e \times H_e) = 
+  \begin{pmatrix}
+    0 & 1 & 2 & \dots & W_p \\
+    \vdots & \vdots  & \vdots & \ddots & \vdots \\
+    0 & 1 & 2 & \dots & W_p \\
+  \end{pmatrix}
+  ,
+  \VU(W_p \times H_p) = 
+  \begin{pmatrix}
+    0 & \dots & 0 \\
+    1 & \dots & 1 \\
+    2 & \dots & 2 \\
+    \vdots & \ddots & \vdots \\
+    H_p & \dots & H_p \\
+  \end{pmatrix}
+\end{equation}
+$\UU$、$\VU$から求めた視線ベクトル$(\xU,\yU,\zU)$を回転行列で回転する。
+視線ベクトルを角度に変換し、これを用いて透視投影画像の座標データ$\UU$、$\VU$が求められる。
+
+\subsection{出力結果}
+入力した全方位画像\hyperref[one]{図\ref{one}}(a)、出力された透視投影画像を\hyperref[one]{図\ref{one}}(b)に示す。
+また、画像出力に用いたパラメータを下に示す。
+\begin{itemize}
+  \item 透視投影画像サイズ (600$\times$800)
+  \item スケール 4.0
+  \item 視線角度 $\theta$ = 0°
+  \item 視線角度 $\phi$ = 0°
+\end{itemize}
+\begin{figure}[!ht]
+  \begin{center}
+    \begin{tabular}{cc}
+      \includegraphics[keepaspectratio, scale=0.07]{figures/texture.jpg}\\
+      (a)全方位画像\\
+      \\
+      \includegraphics[keepaspectratio, scale=0.2]{figures/output_image.png}\\
+      (b)透視投影画像\\
+    \end{tabular}
+  \end{center}
+  \caption{出力結果}
+  \label{one}
+\end{figure}
+\section{直行射影の共線性と共面性を用いたカメラ姿勢推定}
+直行射影の共線性と共面性を用いたカメラ姿勢推定について簡潔に説明する。
+
+直行射影の共線性とは直行射影された複数の点が同一直線状に並ぶ性質のことである。
+Luらの論文では、カメラ姿勢の反復的最適化を行う際に共線性誤差を検証することで、
+カメラ姿勢推定の精度と効率を向上させている。
+
+直行射影の共面性とは射影された複数の点や線が同一平面上に並ぶ性質のことである。
+Zhangらの論文では、カメラ姿勢の反復的最適化を行う際に共面性誤差を検証することで、
+カメラ姿勢推定の精度と効率を向上させている。
+
+直行射影の共線性を用いた点対応からカメラ姿勢を推定する方法と、直行射影の共面性を用いた線対応からカメラ姿勢を推定する方法は、
+直行射影行列が異なるだけである。また、直線の方向ベクトルについても同様に扱うことができるため、
+カメラ姿勢を推定するための目的関数を、これらをすべて足すことで次の式のように定義する。
+\begin{equation}
+  E(\RU,\tU)=\sum^N_{a=1}{||(\IU-\VU_a)(\RU\pU_a+\tU)||}^2+\sum^M_{a=1}{||(\IU-\KU_a)(\RU\rU_a+\tU)||}^2+\sum^M_{a=1}{||(\IU-\KU_a)\RU\dU_a||}^2
+\end{equation}
+目的関数$E(\RU,\tU)$について反復的最適化を行うことで、回転行列$\RU^k$、並進ベクトル$\tU$を得る。
+
+\subsection{全方位カメラのキャリブレーション}
+カメラ位置姿勢推定を行う際に全方位カメラの内部パラメータである焦点距離を使用する。そのため
+事前準備として全方位カメラのキャリブレーションを行った。
+
+全方位カメラのキャリブレーションは以下の手順で行う。
+\begin{itemize}
+  \item 全方位カメラでチェッカーボードを異なる角度から10枚以上撮影
+  \item 全方位画像から、チェッカーボードの全体が写る視点で透視投影画像を生成
+  \item キャリブレーションを行うプログラムを実行
+\end{itemize}
+注意点として透視投影画像を生成する際、解像度は変更しないようにする。
+また、キャリブレーションを行うプログラムはOpenCVのチェッカーボードの交点の座標を調べる関数findChessboardCorners、
+3次元座標と2次元座標の対応から内部パラメータを計算する関数calibrateCameraなどが用いられている。
+
+全方位画像から生成された透視投影画像のキャリブレーション結果の一部を\hyperref[two]{図\ref{two}}に示す。
+\begin{figure}[!ht]
+  \begin{center}
+    \begin{tabular}{cc}
+      \includegraphics[keepaspectratio, width=0.4\linewidth]{figures/GetParam_result/1.jpg}&
+      \includegraphics[keepaspectratio, width=0.4\linewidth]{figures/GetParam_result/5.jpg}\\
+      \includegraphics[keepaspectratio, width=0.4\linewidth]{figures/GetParam_result/9.jpg}&
+      \includegraphics[keepaspectratio, width=0.4\linewidth]{figures/GetParam_result/13.jpg}\\
+    \end{tabular}
+  \end{center}
+  \caption{キャリブレーション結果}
+  \label{two}
+\end{figure}
+また、出力されたカメラの内部パラメータ行列$\MU$を以下に示す。
+\begin{equation}
+  \MU = 
+  \begin{pmatrix}
+    511.69918760786322 & 0.00000000000000 & 784.54139306531715 \\
+    0.00000000000000 & 499.73234060481144 & 536.82834728101511 \\
+    0.00000000000000 & 0.00000000000000 & 1.00000000000000 \\
+  \end{pmatrix}
+\end{equation}
+これより、チェッカーボードの交点を検出し、カメラの内部パラメータが推測されていることがわかる。
+また焦点距離$f_x=511.69918760786322$、$f_y=499.73234060481144$となったが、今回焦点距離は各軸共通なので$f_x$と$f_y$の平均を用いる。
+
+\section{カメラ位置姿勢推定の結果}
+\subsection{入力}
+直行射影の共線性と共面性を利用したカメラ姿勢の推定の際に必要な入力を以下に示す。
+\begin{itemize}
+  \item $\pU_a$:世界座標系で表現された空間点の座標
+  \item $\vU_a$:$\pU_a$に対応する画像上の特徴点座標
+  \item $\dU_a$:世界座標系で表現された直線$L_a$の方向ベクトル
+  \item $\rU_a$:世界座標系で表現された直線$L_a$上の点の座標
+  \item $\nU_a$:$L_a$に対応する画像上の直線のパラメータベクトル
+  \item $\RU^0$:回転行列の初期値
+  \item $thd$:収束に用いるしきい値
+\end{itemize}
+$\pU_a$は3次元モデルの頂点の座標の一部を用いる。ただし透視投影画像に映らない点については、空間点の座標として用いない。
+3次元モデルについてはC棟エレベータ前の廊下のモデルを用いる。3次元モデルを\hyperref[three]{図\ref{three}}に示す。
+\begin{figure}[!ht]
+  \begin{center}
+    \begin{tabular}{c}
+      \includegraphics[keepaspectratio, scale=0.3]{figures/3dmodel.png}
+    \end{tabular}
+  \end{center}
+  \caption{3dモデル}
+  \label{three}
+\end{figure}
+
+$\vU_a$は透視投影画像から手動で選択して用いる。透視投影画像を表示し$\pU_a$に対応する画像の座標をクリックして
+$\vU_a$に追加する(\hyperref[four]{図\ref{four}})。
+\begin{figure}[!ht]
+  \begin{center}
+    \begin{tabular}{c}
+      \includegraphics[keepaspectratio, scale=0.3]{figures/select_point.png}
+    \end{tabular}
+  \end{center}
+  \caption{点特徴を選択}
+  \label{four}
+\end{figure}
+また$\vU_a=(x_a,y_a,f)$で、$(x_a,y_a)$は光軸点を原点とした画像点の座標であるため、以下の式で平行移動する。
+\begin{equation}
+  x_a = x - \frac{W}{2}, y_a = y - \frac{H}{2}
+\end{equation}
+さらに、焦点距離$f$を座標の後ろに追加する必要がある。焦点距離$f$については、全方位カメラのキャリブレーションを行い計算した。
+
+$\dU_a={\dU_1,...,\dU_i,...}$については3次元モデルの頂点の座標の一部($\pU_a$で使用していない点)を用いて以下の式で求める。
+\begin{equation}
+  \dU_i = \frac{\pU_{i+1}-\pU_{i}}{|\pU_{i+1}-\pU_{i}|}
+\end{equation}
+
+$\rU_a$については3次元モデルの頂点の座標の一部($\pU_a$で使用していない点)を用いる。
+
+$\nU_a={\nU_1,...,\nU_i,...}$については$\vU_a$の座標を用いて以下の式で用いる。
+\begin{equation}
+  \nU_i = \frac{\nU_{i+1}\times{\nU_{i}}}{|\nU_{i+1}\times{\nU_{i}}|}
+\end{equation}
+
+$\RU^0$は世界座標系とカメラ座標系の関係から以下の行列を設定する。また、$thd=1.0^{-8}$とする。
+\begin{equation}
+  \RU^0 = 
+  \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 0 & -1 \\
+    0 & 1 & 0 \\
+  \end{pmatrix}
+\end{equation}
+また、カメラ位置の推定結果については、$\cU=(0.0, 0.0, 1.5)$程度になると考えられる。
+\subsection{実行結果}
+出力された回転行列$\RU$、及びカメラ位置$\cU$を以下に示す。
+\begin{equation}
+  \RU =
+  \begin{pmatrix}
+    0.99848126 & 0.01266343 & -0.05361733 \\
+    -0.05432481 &  0.06440953 & -0.99644379 \\
+    -0.00916493 & 0.9978432 & 0.06499965 \\
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  \cU =
+  \begin{pmatrix}
+    0.99930194 \\
+    2.46231046 \\
+    1.18038819 \\
+  \end{pmatrix}
+\end{equation}
+回転行列は$\RU^0$と近い値が出力された。
+ただ、カメラ位置は$y$の値が少し大きくなってしまうことがわかった。
+この原因として、線特徴の選び方が良くなかったことが考えらえる。最低でも3つの平面上の線特徴を
+選択するようにプログラムを変更して(\hyperref[five]{図\ref{five}})、出力された回転行列$\RU$、及びカメラ位置$\cU$を以下に示す。
+\begin{figure}[!ht]
+  \begin{center}
+    \begin{tabular}{c}
+      \includegraphics[keepaspectratio, scale=0.3]{figures/select_point.png}
+    \end{tabular}
+  \end{center}
+  \caption{線特徴を選択}
+  \label{five}
+\end{figure}
+
+\begin{equation}
+  \RU =
+  \begin{pmatrix}
+    0.99862515 & 0.03929384 & -0.03469576 \\ 
+    -0.02785779 & -0.16286014 & -0.98625581 \\
+    -0.04440433 & 0.98586641 & -0.16154159 \\
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  \cU =
+  \begin{pmatrix}
+    0.79346609 \\
+    1.87221025 \\
+    1.37222923 \\
+  \end{pmatrix}
+\end{equation}
+カメラ位置は$y$の値が小さくなり改善されていることがわかる。
+\section{今後の計画}
+今後の計画として、計算されたカメラ運動行列を用いてテクスチャの貼り付けに早急に取り掛かりたい。
+具体的には6月中にテクスチャを貼り付けた3次元モデルを完成させる。
+
+%参考文献
+\begin{thebibliography}{99}
+\bibitem{bib_1} 菅谷保之,「直交射影の共線性と共面性を用いたカメラ姿勢の推定」
+\end{thebibliography}
+
+\end{document}
