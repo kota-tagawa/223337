@@ -1,0 +1,6 @@
+Determining primes from 1 - 1000000 
+thread 2 Elapsed Time: 13.041713 sec.
+thread 0 Elapsed Time: 13.041791 sec.
+thread 1 Elapsed Time: 13.041920 sec.
+thread 3 Elapsed Time: 13.043121 sec.
+Found 78498 primes

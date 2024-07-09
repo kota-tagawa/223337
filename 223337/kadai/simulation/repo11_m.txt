@@ -1,0 +1,17 @@
+mimax = 128 mjmax = 128 mkmax = 256
+imax = 127 jmax = 127 kmax =255
+ Start rehearsal measurement process.
+ Measure the performance in 3 times.
+
+ MFLOPS: 1969.835341 time(s): 0.208807 1.733593e-03
+
+ Now, start the actual measurement process.
+ The loop will be excuted in 862 times
+ This will take about one minute.
+ Wait for a while
+
+cpu : 58.208158 sec.
+Loop executed for 862 times
+Gosa : 8.083068e-04 
+MFLOPS measured : 2030.379096
+Score based on Pentium III 600MHz using Fortran 77: 24.509646
