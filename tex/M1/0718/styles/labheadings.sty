@@ -1,0 +1,21 @@
+\def\ps@labheadings{
+   \def\@oddhead{\underline{%
+	\includegraphics[width=1cm]{styles/toyohashi-logo2.eps}
+        \hbox to
+   \textwidth{\reset@font\bf\@headerleft{\rightmark}\hfil{\leftmark}
+   \hfil \@headerright}}}
+   \def\@oddfoot{\reset@font{\rightmark}\hfil \thepage {\leftmark}\hfil}
+   \def\@evenhead{\underline{%
+       \includegraphics[width=1cm]{styles/toyohashi-log2.eps}
+        \hbox to
+   \textwidth{\reset@font\bf\@headerleft{\rightmark}\hfil{\leftmark}
+   \hfil \@headerright \thesection}}}
+   \let\@evenfoot\@oddfoot}
+
+\global\let\@headerleft\@empty
+\global\let\headertleft\relax
+\newcommand{\headerleft}[1]{\renewcommand{\@headerleft}{#1}}
+
+\global\let\@headerright\@empty
+\global\let\headerright\relax
+\newcommand{\headerright}[1]{\renewcommand{\@headerright}{#1}}
