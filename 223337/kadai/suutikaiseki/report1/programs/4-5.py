@@ -284,7 +284,7 @@ def KCR_lower_bound(data,stdv,myu):
         sum_inv_ramda = sum_inv_ramda + (1.0/sorted_lamda[i])
 
     Dkcr = stdv*np.sqrt(sum_inv_ramda) / np.sqrt(data.shape[0])
-    return Dkcr[0][0].items()
+    return Dkcr[0][0].item()
 
 
 #================================================

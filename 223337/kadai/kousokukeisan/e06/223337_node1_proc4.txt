@@ -1,0 +1,2 @@
+MPI_Bcast: 0.161770 seconds
+MPI_Send/MPI_Recv: 0.116885 seconds

@@ -1,0 +1,4 @@
+Determining primes from 1 - 1000000 
+Total primes found: 78498
+Total MPI processes: 4
+Elapsed Time: 0.070000 sec.
